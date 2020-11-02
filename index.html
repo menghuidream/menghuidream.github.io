@@ -6,7 +6,7 @@
 </head>
 <body>
 
-    <h1>欢迎光临</h1>
+    <h1 style="background-color:rgba(255, 230, 0, 0.705)">欢迎光临</h1>
     <p style="background-color:rgba(0, 204, 255, 0.534)">这里是学习编程的地方，在这里，你可以学到好多好多的知识。</p>
 
     <a href="https://www.runoob.com">
@@ -14,8 +14,8 @@
 
         <img src="壁纸.png" width="600" height="300" />
 
-    <h2>为什么追女孩不能很快表白？</h2>
-    <p>      
+    <h2 style="background-color:rgba(217, 255, 0, 0.74)">为什么追女孩不能很快表白？</h2>
+    <p style="background-color:rgba(0, 255, 255, 0.514)">      
             “为了让她早些知道我喜欢她，聊天两周左右就想表白，为什么不可以？”
         这个话题很典型，也是困扰很多情场小白的一个实际难题。
         今天我就把“恋爱中的那些事儿”说开了、揉碎了讲给你听。
@@ -78,11 +78,33 @@
         就算是再麻烦，你都会乐在其中。“追女生”你之所以感觉到麻烦，是因为没那么喜欢罢了，撩一撩就想着放弃，告个白就像撞大运。答应了，自己稳赚
         。拒绝了，反正自己没付出什么，也不亏。你对她根本没那么大兴趣，所以付出一点都觉得累。之所以麻烦，是因为没有碰到让你怦然心动的那个她，仅此而已。</p>    
 
-        <button type="button" onclick="alert('怎么样啊？')">点我!</button>
-
+        <button type="button" onclick="alert('你喜欢谁？')">点击</button>
         <form >
-            Your name: <input type="text" name="Name" value=""><br>
+            Name: <input type="text" name="Name" value=""><br>
             <input type="submit" value="提交">
             </form>
+        <p id="demo">点击按钮获取您当前坐标（可能需要比较长的时间获取）：</p>
+        <button onclick="getLocation()">坐标</button>
+        <script>
+        var x=document.getElementById("demo");
+        function getLocation()
+        {
+            if (navigator.geolocation)
+            {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else
+            {
+                x.innerHTML="该浏览器不支持获取地理位置。";
+            }
+        }
+        
+        function showPosition(position)
+        {
+            x.innerHTML="纬度: " + position.coords.latitude + 
+            "<br>经度: " + position.coords.longitude;	
+        }
+        </script>
+       <h>完善中……</h>
 </body>
 </html>
