@@ -1,0 +1,178 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>罗盘时钟</title>
+<style>
+*{
+    margin:0;
+    padding:0
+}
+html,body{
+    width:97%;
+    height:97%;
+    background-color:#000;
+    overflow:hidden
+}
+#clock{
+    position:relative;
+    width:100%;
+    height:100%;
+    background:#000
+}
+.label{
+    display:inline-block;
+    color:#4d4d4d;
+    text-align:center;
+    padding:0 5px;
+    font-size:19px;
+    transition:left 1s,top 1s;
+    transform-origin:0% 0%
+}
+span{
+    position: absolute;
+    left: 52%;
+    top: 50%;
+    color: red;
+    transform: rotate(-90deg);
+    font-size: 49px;
+    font-family: cursive;
+    background-image: -webkit-linear-gradient(left,blue,#66ffff 10%,#cc00ff 20%,#CC00CC 30%, #CCCCFF 40%, #00FFFF 50%,#CCCCFF 60%,#CC00CC 70%,#CC00FF 80%,#66FFFF 90%,blue 100%);
+    -webkit-text-fill-color: transparent;/* 将字体设置成透明色 */
+    -webkit-background-clip: text;/* 裁剪背景图，使文字作为裁剪区域向外裁剪 */
+    -webkit-background-size: 200% 100%; 
+    -webkit-animation: masked-animation 4s linear infinite;
+}
+@keyframes masked-animation {
+    0% {
+        background-position: 0  0;
+    }
+    100% {
+        background-position: -100%  0;
+    }
+}
+ 
+</style>
+ 
+ 
+</head>
+<body>
+ 
+<div id="clock"><span>梦</span></div>
+
+</body>
+
+<script>
+var monthText=["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一","十二"];
+var dayText=["零一号","零二号","零三号","零四号","零五号","零六号","零七号","零八号","零九号","十零号","十一号","十二号","十三号","十四号","十五号","十六号","十七号","十八号","十九号","二十号","二十一","二十二","二十三","二十四","二十五","二十六","二十七","二十八","二十九","三十号","三十一"];
+var weekText=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+var hourText=["零零点","零一点","零两点","零三点","零四点","零五点","零六点","零七点","零八点","零九点","零十点","十一点","十二点","十三点","十四点","十五点","十六点","十七点","十八点","十九点","二十点","二十一","二十二","二十三"];
+var minuteText=["零零分","零一分","零二分","零三分","零四分","零五分","零六分","零七分","零八分","零九分","零十分","十一分","十二分","十三分","十四分","十五分","十六分","十七分","十八分","十九分","二十分","二十一","二十二","二十三","二十四","二十五","二十六","二十七","二十八","二十九","三十分","三十一","三十二","三十三","三十四","三十五","三十六","三十七","三十八","三十九","四十分","四十一","四十二","四十三","四十四","四十五","四十六","四十七","四十八","四十九","五十分","五十一","五十二","五十三","五十四","五十五","五十六","五十七","五十八","五十九"];
+var secondsText=["零一秒","零二秒","零三秒","零四秒","零五秒","零六秒","零七秒","零八秒","零九秒","零十秒","十一秒","十二秒","十三秒","十四秒","十五秒","十六秒","十七秒","十八秒","十九秒","二十秒","二十一","二十二","二十三","二十四","二十五","二十六","二十七","二十八","二十九","三十秒","三十一","三十二","三十三","三十四","三十五","三十六","三十七","三十八","三十九","四十秒","四十一","四十二","四十三","四十四","四十五","四十六","四十七","四十八","四十九","五十秒","五十一","五十二","五十三","五十四","五十五","五十六","五十七","五十八","五十九","六十秒"];
+var clock;var monthList=[];
+var dayList=[];
+var weekList=[];
+var hourList=[];
+var minuteList=[];
+var secondsList=[];
+var isCircle=false;
+var textSet=[[monthText,monthList],
+[dayText,dayList],
+[weekText,weekList],
+[hourText,hourList],
+[minuteText,minuteList],
+[secondsText,secondsList]];
+window.onload=function()
+{
+    init();
+    setInterval(function()
+    {runTime();
+    },100);
+    changePosition();
+    setTimeout(function()
+    {changeCircle();
+    },1000);
+}
+function init()
+{clock=document.getElementById('clock');
+for(var i=0;
+    i<textSet.length;i++)
+    {for(var j=0;j<textSet[i][0].length;j++)
+        {var temp=createLabel(textSet[i][0][j]);
+            clock.appendChild(temp);textSet[i][1].push(temp);
+        }
+    }
+}
+function createLabel(text)
+{
+    var div=document.createElement('div');
+div.classList.add('label');
+div.innerText=text;return div;
+}
+function runTime()
+{
+    var now=new Date();
+    var month=now.getMonth();
+    var day=now.getDate();
+    var week=now.getDay();
+    var hour=now.getHours();
+    var minute=now.getMinutes();
+    var seconds=now.getSeconds();
+    initStyle();
+    var nowValue=[month,day-1,week,hour,minute,seconds];
+    for(var i=0;
+        i<nowValue.length;
+        i++)
+        {var num=nowValue[i];
+            textSet[i][1][num].style.color='#fff';
+        }
+if(isCircle)
+{var widthMid=document.body.clientWidth/2;
+    var heightMid=document.body.clientHeight/2;
+    for(var i=0;
+        i<textSet.length;
+        i++){for(var j=0;
+            j<textSet[i][0].length;
+            j++){var r=(i+1)*35+50*i;
+                var deg=360/textSet[i][1].length*(j-nowValue[i]);
+                var x=r*Math.sin(deg*Math.PI/180)+widthMid;
+                var y=heightMid-r*Math.cos(deg*Math.PI/180);
+                var temp=textSet[i][1][j];
+                temp.style.transform='rotate('+(-90+deg)+'deg)';
+                temp.style.left=x+'px';
+                temp.style.top=y+'px';
+            }
+        }
+    }
+}
+function initStyle()
+{var label=document.getElementsByClassName('label');
+for(var i=0;
+    i<label.length;i++)
+    {label[i].style.color='#4d4d4d';
+}
+}
+function changePosition()
+{
+    for(let i=0;i<textSet.length;
+        i++)
+        {
+            for(let j=0;
+                j<textSet[i][1].length;
+                j++){
+                    let tempX=textSet[i][1][j].offsetLeft+"px";
+                    let tempY=textSet[i][1][j].offsetTop+"px";
+                    setTimeout(function(){
+                        textSet[i][1][j].style.position="absolute";
+                        textSet[i][1][j].style.left=tempX;textSet[i][1][j].style.top=tempY;
+                    },50);
+                }
+            }
+        }
+function changeCircle()
+{
+    isCircle=true;
+    clock.style.transform="rotate(90deg)";
+}
+ 
+</script>
+</html>
