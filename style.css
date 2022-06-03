@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+body {
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    position:relative;
+}
+.tab {
+    position: fixed;
+    width: 100%;
+    top:0;
+    height: 40px;
+    background: #000;
+    box-shadow: 0 1px 2px #666;
+}
+.tls a {
+    color: #fff;
+    display: block;
+}
+.tls a:hover {
+    background: #666;
+}
+.tlsls {
+    float: left;
+    width: 100px;
+    line-height: 40px;
+    text-align: center;
+}
+.tlsls:hover .droplist {
+    display: block;
+}
+.droplist {
+    color: #fff;
+    background: #000;
+    box-shadow: 0 1px 2px #333;
+    display: none;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.droplist li {
+    border-top: 1px solid #666;
+}
+.t1 {
+    position: absolute;
+    margin: auto;
+    top: 200px;
+    left: 250px;
+    width: 60%;
+}
+.t1 h1 {
+    font-size: 40px;
+    text-align: center;
+}
+.t1 p {
+    text-align: left;
+    line-height: 200%;
+    font-size: 20px;
+    font-weight: bold;
+}
+.message {
+    position: absolute;
+    border: #666;
+    border-radius: 6px;
+    left: 20px;
+    top: 200px;
+    width: 160px;
+    height: 240px;
+    background-color: rgb(63, 147, 231);
+}
+.message img {
+    
+    object-fit: cover;
+    height: auto;
+    width: 120px;
+}
+.message p {
+
+    text-align: center;
+    font-weight: bold;
+}
