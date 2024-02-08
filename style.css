@@ -5,11 +5,11 @@
     list-style: none;
 }
 body {
-    background-image: url("images/background.jpg");
+    background: #0f95b0;
     background-size: cover;
     position:relative;
 }
-.tab {
+.tab_top {
     position: fixed;
     width: 100%;
     top:0;
@@ -17,51 +17,59 @@ body {
     background: #000;
     box-shadow: 0 1px 2px #666;
 }
-.tls a {
-    color: #fff;
+.tab_list_x a {
+    color: #ccccd6;
     display: block;
 }
-.tls a:hover {
+.tab_list_x a:hover {
     background: #666;
 }
-.tlsls {
+.tab_list_y {
+    position: relative;
     float: left;
-    width: 100px;
+    width: 80px;
     line-height: 40px;
     text-align: center;
 }
-.tlsls:hover .droplist {
+.tab_list_y:hover .drop_list {
     display: block;
 }
-.droplist {
-    color: #fff;
+.login {
+    position: absolute;
+    width: 100px;
+    line-height: 40px;
+    text-align: center;
+    right: 0;
+}
+.drop_list {
+    color: #ccccd6;
     background: #000;
     box-shadow: 0 1px 2px #333;
     display: none;
     border-radius: 6px;
     overflow: hidden;
 }
-.droplist li {
+.drop_list li {
     border-top: 1px solid #666;
 }
-.t1 {
+.introduction {
     position: absolute;
     margin: auto;
     top: 200px;
     left: 250px;
     width: 60%;
 }
-.t1 h1 {
+.introduction h1 {
     font-size: 40px;
     text-align: center;
 }
-.t1 p {
+.introduction p {
     text-align: left;
     line-height: 200%;
     font-size: 20px;
     font-weight: bold;
 }
-.message {
+.my_message {
     position: absolute;
     border: #666;
     border-radius: 6px;
@@ -69,16 +77,15 @@ body {
     top: 200px;
     width: 160px;
     height: 240px;
-    background-color: rgb(63, 147, 231);
+    background-color: #000;
 }
-.message img {
-    
+.my_message img {
     object-fit: cover;
     height: auto;
     width: 120px;
 }
-.message p {
-
+.my_message p {
+    color: #ccccd6;
     text-align: center;
     font-weight: bold;
 }
